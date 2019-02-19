@@ -16,4 +16,14 @@ public class HelloServiceTest {
         assertThat(helloWorldStatement, is("Hello World!"));
     }
 
+    @Test
+    public void saveArtStoresTheArtInMemory() {
+        HelloService helloService = new HelloService();
+        Art artwork = new Art("macaroni necklace");
+
+        helloService.saveArt(artwork);
+
+        assertThat(helloService.savedArt.get(0), is(artwork));
+    }
+
 }
