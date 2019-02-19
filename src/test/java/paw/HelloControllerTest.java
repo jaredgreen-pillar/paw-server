@@ -47,7 +47,7 @@ public class HelloControllerTest {
     public void shouldSaveArtToHelloService() throws Exception {
         Art artPiece = new Art("some text");
 
-        mockMvc.perform(post("/saveArt")
+        mockMvc.perform(post("/art")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(artPiece)))
                 .andExpect(status().isOk());
