@@ -9,4 +9,6 @@ public class HelloService {
         return "Hello World!";
     }
 
+    public void saveArt(Art artwork) {
+    }
 }
