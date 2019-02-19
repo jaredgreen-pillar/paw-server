@@ -44,10 +44,10 @@ public class HelloControllerTest {
     }
 
     @Test
-    public void shouldSaveTextToHelloService() throws Exception {
+    public void shouldSaveArtToHelloService() throws Exception {
         Art artPiece = new Art("some text");
 
-        mockMvc.perform(post("/saveText")
+        mockMvc.perform(post("/saveArt")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(artPiece)))
                 .andExpect(status().isOk());

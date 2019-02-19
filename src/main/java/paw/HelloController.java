@@ -16,8 +16,8 @@ public class HelloController {
         return helloService.retrieveHelloWorldStatement();
     }
 
-    @PostMapping("/saveText")
-    public ResponseEntity<?> saveText(@RequestBody Art art) {
+    @PostMapping("/saveArt")
+    public ResponseEntity<?> saveArt(@RequestBody Art art) {
         helloService.saveArt(art);
         return new ResponseEntity<>(art, HttpStatus.OK);
     }
