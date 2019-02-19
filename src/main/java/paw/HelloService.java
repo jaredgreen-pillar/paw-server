@@ -16,4 +16,8 @@ public class HelloService {
     public void saveArt(Art artwork) {
         this.savedArt.add(artwork);
     }
+
+    public ArrayList<Art> retrieveArt() {
+        return null;
+    }
 }

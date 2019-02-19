@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -53,5 +55,20 @@ public class HelloControllerTest {
                 .andExpect(status().isOk());
 
         verify(mockHelloService, times(1)).saveArt((artPiece));
+    }
+
+    @Test
+    public void getArtShouldReturnAllArt() throws Exception {
+        ArrayList<Art> retrievedArt = new ArrayList<>();
+        Art artwork = new Art("macaroni necklace");
+        retrievedArt.add(artwork);
+
+        String retrievedArtAsString = objectMapper.writeValueAsString(retrievedArt);
+
+        when(mockHelloService.retrieveArt()).thenReturn(retrievedArt);
+
+        mockMvc.perform(get("/art"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(retrievedArtAsString)));
     }
 }
